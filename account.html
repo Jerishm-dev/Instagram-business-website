@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Account</title>
+<link rel="stylesheet" href="products.css">
+</head>
+
+<body>
+
+<h1 style="text-align:center;margin-top:50px;">My Account</h1>
+
+<div id="accountContainer"
+     style="max-width:600px;margin:30px auto;padding:30px;
+     background:white;color:black;border-radius:20px;">
+
+</div>
+
+<div style="text-align:center;margin-top:20px;">
+  <button onclick="logout()" class="buy-btn">Logout</button>
+</div>
+
+<script>
+
+/* ===============================
+   CHECK LOGIN
+================================= */
+
+const email = localStorage.getItem("loggedInUser");
+
+if(!email){
+  alert("Please login first.");
+  window.location.href = "index.html";
+}
+
+let userData = JSON.parse(localStorage.getItem(email));
+
+renderProfile();
+
+/* ===============================
+   RENDER PROFILE
+================================= */
+
+function renderProfile(){
+
+  const orders = JSON.parse(localStorage.getItem(email + "_orders")) || [];
+
+  document.getElementById("accountContainer").innerHTML = `
+    
+    <h2>Profile Details</h2>
+    <p><strong>Name:</strong> ${userData.name}</p>
+    <p><strong>Email:</strong> ${userData.email}</p>
+    <p><strong>Phone:</strong> ${userData.phone}</p>
+    <p><strong>Address:</strong> ${userData.address}</p>
+    
+    <br>
+    <button onclick="editProfile()" class="buy-btn">Edit Profile</button>
+
+    <hr style="margin:30px 0;">
+
+    <h2>Order History</h2>
+
+    ${
+      orders.length === 0
+      ? "<p>No orders yet.</p>"
+      : orders.map(order => `
+          <div style="margin-bottom:20px;padding:15px;border:1px solid #ccc;border-radius:10px;">
+            <img src="${order.image}" width="80"><br>
+            <strong>${order.name}</strong><br>
+            Quantity: ${order.quantity}<br>
+            Date: ${order.date}
+          </div>
+        `).join("")
+    }
+  `;
+}
+
+/* ===============================
+   EDIT PROFILE
+================================= */
+
+function editProfile(){
+
+  document.getElementById("accountContainer").innerHTML = `
+    <h2>Edit Profile</h2>
+
+    <input id="editName" value="${userData.name}" placeholder="Name"><br><br>
+    <input id="editPhone" value="${userData.phone}" placeholder="Phone"><br><br>
+    <input id="editAddress" value="${userData.address}" placeholder="Address"><br><br>
+
+    <button onclick="saveProfile()" class="buy-btn">Save</button>
+    <button onclick="renderProfile()" class="buy-btn" style="background:gray;">Cancel</button>
+  `;
+}
+
+function saveProfile(){
+
+  userData.name = document.getElementById("editName").value;
+  userData.phone = document.getElementById("editPhone").value;
+  userData.address = document.getElementById("editAddress").value;
+
+  localStorage.setItem(email, JSON.stringify(userData));
+
+  alert("Profile updated successfully");
+  renderProfile();
+}
+
+/* ===============================
+   LOGOUT
+================================= */
+
+function logout(){
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

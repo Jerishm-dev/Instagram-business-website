@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Checkout</title>
+<link rel="stylesheet" href="products.css">
+</head>
+
+<body>
+    
+<button class="back-btn" onclick="goToCart()">
+    ← Back to Cart
+</button>
+
+<script>
+function goToCart(){
+    window.location.href = "cart.html";
+}
+</script>
+<h1 style="text-align:center;margin-top:40px;">Checkout</h1>
+
+<div style="max-width:600px;margin:40px auto;padding:30px;background:white;color:black;border-radius:20px;">
+
+<div id="productSection"></div>
+
+<hr style="margin:30px 0;"> 
+
+<h2>Customer Details</h2>
+<div id="customerSection"></div>
+
+</div>
+
+<script>
+
+// Get cart
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// If cart is empty
+if(cart.length === 0){
+
+  document.body.innerHTML = `
+    <button class="back-btn" onclick="goToCart()">← Back to Cart</button>
+
+    <div style="text-align:center;margin-top:120px;">
+      <h1>Your Cart is Empty 🛒</h1>
+      <p>Please add products before proceeding to checkout.</p>
+      <br>
+      <button onclick="goToCart()" style="padding:12px 25px;border-radius:30px;cursor:pointer;">
+        Go To Cart
+      </button>
+    </div>
+  `;
+
+} else {
+
+  // Get logged in user
+  const loggedEmail = localStorage.getItem("loggedInUser");
+  const userData = loggedEmail ? JSON.parse(localStorage.getItem(loggedEmail)) : null;
+
+  let productHTML = "";
+
+  cart.forEach(item => {
+    productHTML += `
+      <div style="margin-bottom:25px;">
+        <img src="${item.img}" width="150" style="border-radius:15px;"><br>
+        <h3>${item.name}</h3>
+        <p>Size: ${item.size}</p>
+        <p>Quantity: ${item.quantity}</p>
+        <h4>₹${item.price * item.quantity}</h4>
+      </div>
+      <hr>
+    `;
+  });
+
+  const email = localStorage.getItem("loggedInUser");
+
+let orders = JSON.parse(localStorage.getItem(email + "_orders")) || [];
+
+orders.push({
+  name: document.getElementById("orderName").innerText,
+  image: document.getElementById("orderImg").src,
+  quantity: 1,
+  date: new Date().toLocaleDateString()
+});
+
+localStorage.setItem(email + "_orders", JSON.stringify(orders));
+
+  document.getElementById("productSection").innerHTML = productHTML;
+
+  if(userData){
+    document.getElementById("customerSection").innerHTML = `
+      <p><strong>Name:</strong> ${userData.name}</p>
+      <p><strong>Email:</strong> ${userData.email}</p>
+      <p><strong>Phone:</strong> ${userData.phone}</p>
+      <p><strong>Address:</strong> ${userData.address}</p>
+    `;
+  } else {
+   document.getElementById("customerSection").innerHTML = `
+  <p>Please login before placing order.</p>
+
+  <button onclick="goToLogin()" class="buy-btn" 
+     style="margin-top:10px;display:inline-block;">
+     Login
+  </button>
+
+  <br><br>
+
+  <button onclick="goToSignup()" class="buy-btn" 
+     style="margin-top:10px;display:inline-block;">
+     Create Account
+  </button>
+`;
+  }
+
+  function goToLogin(){
+  localStorage.setItem("redirectAfterLogin", "checkout.html");
+  window.location.href = "login.html";
+}
+
+function goToSignup(){
+  localStorage.setItem("redirectAfterLogin", "checkout.html");
+  window.location.href = "signup.html";
+}
+}
+
+// Back function
+function goToCart(){
+  window.location.href = "cart.html";
+}
+
+</script>
+
+</body>
+</html>

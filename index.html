@@ -1,0 +1,332 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Designed For You</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  gsap.to(".reviews-track",{
+    y:"-50%",
+    duration:20,
+    ease:"fade-in",
+    repeat:-1
+  });
+
+});
+</script>
+
+</head>
+
+<body>
+
+
+<input type="text" id="authName" placeholder="Full Name">
+<input type="text" id="authPhone" placeholder="Phone Number">
+<input type="text" id="authAddress" placeholder="Address">
+
+<!-- ======================
+AUTH MODAL
+====================== -->
+
+<div class="auth-form">
+
+  <input type="text" id="authName" placeholder="Full Name" style="display:none;">
+  <input type="email" id="authEmail" placeholder="Email">
+  <input type="text" id="authPhone" placeholder="Phone" style="display:none;">
+  <input type="text" id="authAddress" placeholder="Address" style="display:none;">
+  <input type="password" id="authPassword" placeholder="Password">
+
+  <button id="authSubmit">Login</button>
+
+  <p class="switch-text">
+    Don't have an account? <span id="switchAuth">Signup</span>
+  </p>
+
+</div>
+
+
+<!-- NAVBAR -->
+
+<nav>
+<div class="logo">
+<span class="logo-main">DFY</span>
+<span class="logo-sub">Designed For You</span>
+</div>
+
+<div class="cta-btn" id="authBtn">Login / Signup</div>
+</nav>
+  
+
+<!-- HERO -->
+
+<section class="hero-wrapper">
+
+<!-- ================= PANEL 1 ================= -->
+
+<div class="hero-panel panel1">
+
+  <div class="polaroids-layer">
+
+    <img src="images/image1.jpeg" class="polaroid p1">
+    <img src="images/image1b.jpeg" class="polaroid p1b">
+    <img src="images/image1c.jpeg" class="polaroid p1c">
+
+  </div>
+
+  <div class="floating-layer">
+    <span class="float-item heart"></span>
+    <span class="float-item star"></span>
+    <span class="float-item sparkle"></span>
+    <span class="float-item circle"></span>
+  </div>
+
+  <h1 class="hero-text gradient-text">Turn Memories</h1>
+
+
+</div>
+
+<!-- ================= PANEL 2 ================= -->
+
+<div class="hero-panel panel2">
+
+  <div class="polaroids-layer">
+
+    <img src="images/image2.jpeg" class="polaroid p2">
+    <img src="images/image2b.jpeg" class="polaroid p2b">
+    <img src="images/image2c.jpeg" class="polaroid p2c">
+
+  </div>
+
+  <div class="floating-layer">
+    <span class="float-item heart"></span>
+    <span class="float-item star"></span>
+    <span class="float-item sparkle"></span>
+    <span class="float-item circle"></span>
+  </div>
+
+  <h1 class="hero-text gradient-text">Into Beautiful</h1>
+
+</div>
+
+
+
+<!-- ================= PANEL 3 ================= -->
+
+<div class="hero-panel panel3">
+
+  <div class="polaroids-layer">
+
+    <img src="images/image3.jpeg" class="polaroid p3">
+    <img src="images/image3b.jpeg" class="polaroid p3b">
+    <img src="images/image3c.jpeg" class="polaroid p3c">
+
+  </div>
+
+  <div class="floating-layer">
+    <span class="float-item heart"></span>
+    <span class="float-item star"></span>
+    <span class="float-item sparkle"></span>
+    <span class="float-item circle"></span>
+  </div>
+
+  <h1 class="hero-text gradient-text">Custom Gifts</h1>
+
+</div>
+
+
+
+<!-- ================= PANEL 4 ================= -->
+
+<div class="hero-panel panel4">
+
+  <div class="polaroids-layer">
+
+    <img src="images/image4.jpeg" class="polaroid p4">
+    <img src="images/image4b.jpeg" class="polaroid p4b">
+    <img src="images/image4c.jpeg" class="polaroid p4c">
+
+  </div>
+
+  <div class="floating-layer">
+    <span class="float-item heart"></span>
+    <span class="float-item star"></span>
+    <span class="float-item sparkle"></span>
+    <span class="float-item circle"></span>
+  </div>
+
+  <h1 class="hero-text gradient-text">Made For You</h1>
+
+</div>
+
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="products-section">
+
+<h2>Our Products</h2>
+
+<div class="product-panel">
+
+<div class="gradient-orb orb1"></div>
+<div class="gradient-orb orb2"></div>
+
+<div class="product-horizontal">
+
+<a href="products.html#frames" class="product-card">
+<img src="images/image1.jpeg">
+<span>Custom Frames</span>
+</a>
+
+<a href="products.html#keychains" class="product-card">
+<img src="images/image2.jpeg">
+<span>Custom Keychains</span>
+</a>
+
+<a href="products.html#gifts" class="product-card">
+<img src="images/image3.jpeg">
+<span>Personalized Gifts</span>
+</a>
+
+<a href="products.html#premium" class="product-card">
+<img src="images/image4.jpeg">
+<span>Premium Designs</span>
+</a>
+
+</div>
+
+<div class="view-all">
+<a href="products.html" class="view-btn">View All</a>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROCESS -->
+
+<section class="process-section">
+
+<div class="neon-particles"></div>
+<div class="neon-bg"></div>
+
+<h2>How It Works</h2>
+
+<div class="step">
+<span class="step-text">Choose Product</span>
+<span class="step-icon"><img src="images/product.svg"></span>
+</div>
+
+<div class="step">
+<span class="step-text">Send Photo</span>
+<span class="step-icon"><img src="images/photo.svg"></span>
+</div>
+
+<div class="step">
+<span class="step-text">Preview Design</span>
+<span class="step-icon"><img src="images/preview.svg"></span>
+</div>
+
+<div class="step">
+<span class="step-text">Delivery</span>
+<span class="step-icon"><img src="images/delivery.svg"></span>
+</div>
+
+</section>
+
+<!-- ======================
+PARALLAX TESTIMONIAL SECTION
+====================== -->
+
+<section class="parallax">
+
+<h2 class="title">Customer Love</h2>
+
+<div class="reviews-container">
+
+<div class="reviews-track">
+
+<div class="review">
+<img src="https://i.pravatar.cc/100?img=1">
+<p>Amazing service and quality design!</p>
+</div>
+
+<div class="review">
+<img src="https://i.pravatar.cc/100?img=2">
+<p>Best experience working with this team.</p>
+</div>
+
+<div class="review">
+<img src="https://i.pravatar.cc/100?img=3">
+<p>Smooth modern UI ⭐</p>
+</div>
+
+<!-- duplicate for seamless loop -->
+<div class="review">
+<img src="https://i.pravatar.cc/100?img=1">
+<p>Amazing service and quality design!</p>
+</div>
+
+<div class="review">
+<img src="https://i.pravatar.cc/100?img=2">
+<p>Best experience working with this team.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================
+ABOUT SECTION
+====================== -->
+
+<section class="about">
+
+<h2>About Us</h2>
+
+<p>
+Our goal is simple — to transform your photos, stories, and emotions into unique keepsakes that feel personal and unforgettable.
+</p>
+
+<p>💌 Handmade with love
+🎨 Fully customizable
+📦 Perfect for gifting & memories
+</p>
+</section>
+
+<!-- ======================
+FOOTER
+====================== -->
+
+<footer>
+
+<p>© 2026 Designed For You</p>
+<p>Designed by Landing Genie</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

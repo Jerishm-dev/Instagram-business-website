@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cart</title>
+<link rel="stylesheet" href="products.css">
+</head>
+
+<body>
+
+<button class="continue-btn" onclick="goBack()">
+← Continue Shopping
+</button>
+
+<section class="cart-page">
+
+<h1>Your Cart 🛒</h1>
+
+<div id="cartContainer"></div>
+
+<h2 class="cart-total">Total: ₹<span id="totalPrice">0</span></h2>
+
+</section>
+
+<button class="checkout-btn" onclick="checkout()">
+Proceed To Checkout →
+</button>
+
+<script src="products.js"></script>
+
+<script>
+
+function goBack(){
+    window.location.href = "products.html";
+}
+
+function loadCart(){
+
+const container = document.getElementById("cartContainer");
+const totalElement = document.getElementById("totalPrice");
+
+container.innerHTML = "";
+
+let total = 0;
+
+cart.forEach((item,index)=>{
+
+const itemTotal = item.price * item.quantity;
+total += itemTotal;
+
+container.innerHTML += `
+<div class="cart-item">
+<img src="${item.img}" width="80">
+<div>
+<p><strong>${item.name}</strong></p>
+<p>Size: ${item.size}</p>
+<p>Qty: ${item.quantity}</p>
+<p>₹${item.price} × ${item.quantity} = ₹${itemTotal}</p>
+<button onclick="removeItem(${index})">Remove</button>
+</div>
+</div>
+<hr>
+`;
+
+});
+
+totalElement.innerText = total;
+
+}
+
+function removeItem(index){
+cart.splice(index,1);
+saveCart();
+loadCart();
+}
+
+function checkout(){
+window.location.href = "checkout.html";
+}
+
+document.addEventListener("DOMContentLoaded", loadCart);
+
+</script>
+
+</body>
+</html>

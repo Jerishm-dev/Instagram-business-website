@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>All Products</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="products.css">
+
+</head>
+
+<body>
+
+<button class="back-btn" onclick="goBack()">
+    ← Back
+</button>
+
+<script>
+function goBack(){
+    window.location.href = "index.html";
+}
+
+function goToCart(){
+    window.location.href = "cart.html";
+}
+</script>
+
+<div class="cart-icon" onclick="goToCart()">
+🛒
+<span id="cartCount" class="cart-badge">0</span>
+</div>
+
+<!-- =========================================
+     SECONDARY DETAIL POPUP
+========================================= -->
+<div id="secondaryPopup" class="popup hidden">
+
+    <div class="glass-box detail-box">
+
+        <span class="close" onclick="closeSecondaryPopup()">✕</span>
+
+        <img id="secImg" class="detail-image">
+
+        <h2 id="secName"></h2>
+
+        <p id="secDesc"></p>        
+
+        <label>Select Size</label>
+        <select id="secSize" onchange="updateSecondaryPrice()"></select>
+
+        <h3 id="secPrice">₹0</h3>
+
+        <div class="popup-buttons">
+            <button onclick="addSelectedToCart()">
+                Add To Cart
+            </button>
+
+            <button onclick="openOrderPopup()">
+                Buy Now
+            </button>
+        </div>
+
+    </div>
+
+</div>
+<!-- =========================================
+     MAIN PRODUCT SECTION
+========================================= -->
+
+<section class="products-page">
+
+<h1>All Products. Designed For You.</h1>
+
+<div class="product-grid">
+
+    <div class="product-card">
+        <h2>Customized Frames</h2>
+        <img src="images/image1.jpeg" loading="lazy">
+        <p class="description">Premium customizable photo frames.</p>
+        <p class="price">Starting from ₹499</p>
+        <button onclick="scrollToSection('frames')" class="buy-btn">
+            View Collection
+        </button>
+    </div>
+
+    <div class="product-card">
+        <h2>Polaroids</h2>
+        <img src="images/image1b.jpeg" loading="lazy">
+        <p class="description">Vintage aesthetic polaroid prints.</p>
+        <p class="price">Starting from ₹149</p>
+        <button onclick="scrollToSection('polaroids')" class="buy-btn">
+            View Collection
+        </button>
+    </div>
+
+    <div class="product-card">
+        <h2>Photo Keychains</h2>
+        <img src="images/image1c.jpeg" loading="lazy">
+        <p class="description">Carry memories everywhere.</p>
+        <p class="price">Starting from ₹99</p>
+        <button onclick="scrollToSection('keychains')" class="buy-btn">
+            View Collection
+        </button>
+    </div>
+
+</div>
+</section>
+
+<!-- =========================================
+     PRODUCT SECTIONS
+========================================= -->
+
+<section class="product-sections">
+
+<!-- ================= CUSTOM FRAMES ================= -->
+
+<div class="category-section" id="frames">
+
+<h2>Customized Frames</h2>
+
+<div class="category-grid">
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?1">
+
+<p>Classic Frame</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Classic Frame',
+'https://picsum.photos/300?1',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?2">
+
+<p>Modern Frame</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Modern Frame',
+'https://picsum.photos/300?2',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+
+</div>
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?3">
+
+<p>Premium Frame</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Premium Frame',
+'https://picsum.photos/300?3',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?4">
+
+<p>Wooden Frame</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Wooden Frame',
+'https://picsum.photos/300?4',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?5">
+
+<p>Premium Glossy Frame</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Premium Glossy Frame',
+'https://picsum.photos/300?5',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- ================= POLAROIDS ================= -->
+
+<div class="category-section" id="polaroids">
+
+<h2>Polaroids</h2>
+
+<div class="category-grid">
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?4">
+
+<p>Vintage Polaroid</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Vintage Polaroid',
+'https://picsum.photos/300?4',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?5">
+
+<p>Mini Polaroid</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Mini Polaroid',
+'https://picsum.photos/300?5',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?6">
+
+<p>Aesthetic Pack</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Aesthetic Pack',
+'https://picsum.photos/300?6',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- ================= KEYCHAINS ================= -->
+
+<div class="category-section" id="keychains">
+
+<h2>KeyChains</h2>
+
+<div class="category-grid">
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?7">
+
+<p>Heart KeyChanin</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Heart KeyChanin',
+'https://picsum.photos/300?7',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?8">
+
+<p>Premium KeyChanin</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Premium KeyChanin',
+'https://picsum.photos/300?8',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+<div class="category-product">
+
+<img src="https://picsum.photos/300?9">
+
+<p>Arcylic KeyChain</p>
+
+<button class="buy-btn"
+onclick="openSecondaryPopup(
+'Arcylic KeyChain',
+'https://picsum.photos/300?9',
+'Premium classic wooden frame with glossy finish',
+{ '8x10':499, '12x16':799, '16x20':999 }
+)">
+View Product
+</button>
+
+</div>
+
+</div>
+</div>
+
+</section>
+
+<!-- =========================================
+     COLLECTION POPUP
+========================================= -->
+
+<div id="collectionPopup" class="popup hidden">
+
+<div class="glass-box">
+
+<span class="close" onclick="closeCollection()">✕</span>
+
+<h2 id="categoryTitle"></h2>
+
+<div id="collectionGrid" class="collection-grid"></div>
+
+</div>
+</div>
+
+<!-- =========================================
+     DETAIL POPUP
+========================================= -->
+
+<div id="detailPopup" class="popup hidden">
+
+<div class="glass-box detail-box">
+
+<span class="close" onclick="closeDetail()">✕</span>
+
+<img id="detailImg" class="detail-image">
+
+<h2 id="detailName"></h2>
+
+<p id="detailDesc"></p>
+
+<h3 id="detailPrice">₹0</h3>
+
+<label>Select Size</label>
+<select id="detailSize" onchange="updatePrice()"></select>
+
+<label>Quantity</label>
+<input type="number" id="quantity" value="1" min="1">
+
+<div class="popup-buttons">
+<button onclick="addToCart()">Add To Cart</button>
+<button onclick="buyNow()">Buy Now</button>
+</div>
+
+</div>
+</div>
+
+<!-- =========================================
+     ORDER POPUP
+========================================= -->
+
+<div id="orderPopup" class="popup hidden">
+
+<div class="glass-box detail-box">
+
+<span class="close" onclick="closeOrder()">✕</span>
+
+<h2>Complete Your Order</h2>
+
+<div class="dm-icons">
+
+<a id="whatsappLink" target="_blank">
+<img src="images/whatsapp.png" class="dm-icon">
+</a>
+
+<a id="instagramLink" target="_blank">
+<img src="images/instagram.png" class="dm-icon">
+</a>
+
+</div>
+
+<p style="margin-top:15px;">
+Click your preferred platform to send order details.
+</p>
+
+</div>
+</div>
+
+
+<script src="products.js"></script>
+
+</body>
+</html>

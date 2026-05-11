@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+body{
+  font-family: Poppins, sans-serif;
+  background:#0f0f0f;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+}
+
+.login-box{
+  background:#1c1c1c;
+  padding:40px;
+  border-radius:20px;
+  width:350px;
+  text-align:center;
+}
+
+.login-box h2{
+  margin-bottom:25px;
+}
+
+.login-box input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+}
+
+.buy-btn{
+  background:#ff3caa;
+  color:white;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  width:100%;
+  font-weight:600;
+}
+
+.buy-btn:hover{
+  opacity:0.85;
+}
+
+a{
+  color:#ff3caa;
+  text-decoration:none;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+  <h2>Login</h2>
+
+  <input type="email" id="loginEmail" placeholder="Email">
+  <input type="password" id="loginPassword" placeholder="Password">
+
+  <button onclick="loginUser()" class="buy-btn">
+    Login
+  </button>
+
+  <br><br>
+
+  <p>
+    Don't have an account?
+    <a href="signup.html">Create Account</a>
+  </p>
+
+</div>
+
+<script>
+
+function loginUser(){
+
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  if(!email || !password){
+    alert("Please fill all fields");
+    return;
+  }
+
+  const savedUser = JSON.parse(localStorage.getItem(email));
+
+  if(savedUser && savedUser.password === password){
+
+    // Save logged in user
+    localStorage.setItem("loggedInUser", email);
+
+    alert("Login Successful!");
+
+    // Check if redirect exists
+    const redirectPage = localStorage.getItem("redirectAfterLogin");
+
+    if(redirectPage){
+      localStorage.removeItem("redirectAfterLogin");
+      window.location.href = redirectPage;
+    } else {
+      window.location.href = "index.html"; // default page
+    }
+
+  } else {
+    alert("Invalid Email or Password");
+  }
+
+}
+
+</script>
+
+</body>
+</html>

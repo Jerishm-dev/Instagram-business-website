@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Designed For You / Create Account</title>
+<link rel="stylesheet" href="products.css">
+</head>
+
+<body>
+
+<h1 style="text-align:center;margin-top:80px;">Create Account</h1>
+
+<div style="max-width:400px;margin:40px auto;padding:30px;background:white;color:black;border-radius:20px;">
+
+  <input type="text" id="name" placeholder="Full Name"><br><br>
+  <input type="email" id="email" placeholder="Email"><br><br>
+  <input type="text" id="phone" placeholder="Phone"><br><br>
+  <input type="text" id="address" placeholder="Address"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
+
+  <button onclick="signup()" class="buy-btn" style="width:100%;">Create Account</button>
+
+  <p style="margin-top:15px;text-align:center;">
+    Already have an account? 
+    <a href="login.html">Login</a>
+  </p>
+
+</div>
+
+<script>
+
+function signup(){
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const password = document.getElementById("password").value;
+
+  if(!name || !email || !phone || !address || !password){
+    alert("Please fill all fields");
+    return;
+  }
+
+  // Check if user already exists
+  if(localStorage.getItem(email)){
+    alert("Account already exists. Please login.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  const userData = { name, email, phone, address, password };
+
+  localStorage.setItem(email, JSON.stringify(userData));
+
+  // Automatically log in user
+  localStorage.setItem("loggedInUser", email);
+
+  alert("Account created successfully!");
+
+  // Redirect logic
+  const redirectPage = localStorage.getItem("redirectAfterLogin");
+
+  if(redirectPage){
+    localStorage.removeItem("redirectAfterLogin");
+    window.location.href = redirectPage;
+  } else {
+    window.location.href = "index.html";
+  }
+}
+
+</script>
+
+</body>
+</html>
